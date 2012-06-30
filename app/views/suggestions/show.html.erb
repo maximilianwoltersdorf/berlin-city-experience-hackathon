@@ -1,0 +1,28 @@
+<div data-role="page" data-add-back-btn="true">
+
+
+
+	<div data-role="header">
+		<h1>Wilkommen <%= current_user.email %></h1>
+		<h1><%= link_to "home", pages_path %></h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<h2> Titel: <%= @suggestion.title %> </h2>
+	<%= image_tag(@suggestion.file, :size => "300x200")%>
+	<h3> Beschreibung: <%= @suggestion.description %> </h3>
+	<h3> Voting: +15 </h3>
+		<img src="images/testimage1.jpg" style="margin:0 auto;
+							margin-left:auto;
+							margin-right:auto;
+							align:center;
+							text-align:center;"/>
+		<form action="form.php" method="post"> 
+		<label for="basic">Neuer Kommentar:</label>
+		<input type="text" name="name" id="basic" value="" data-mini="true" />
+		<input type="submit" value="speichern" />		
+		</form>
+
+	</div><!-- /content -->
+
+</div><!-- /page -->

@@ -1,0 +1,29 @@
+<div data-role="page" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Wilkommen <%= current_user.email %></h1>
+		<h1><%= link_to "home", pages_path %></h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+
+		<%= semantic_form_for @suggestion, :html => {:multipart => true, :'data-ajax' => 'false'} do |s| %>
+    		<%= s.inputs :title, :description %>
+    		<%= s.input :file, :as => :file %>
+    		<%= s.input :user_id, :as => :hidden, :value => @current_user.id %>
+    		<%= s.actions :submit, :cancel  %>
+  		<% end %>
+
+				
+
+		<!--<ul data-role="listview" data-inset="true" >
+			<li><a href="acura.html">Vorschlag einreichen</a></li>
+			<li><a href="audi.html">Alle Vorschläge ansehen</a></li>
+			<li><a href="bmw.html">Meine Einträge</a></li>
+			<li><a href="bmw.html">Profil</a></li>
+			<li><a href="bmw.html">Meine Einträge</a></li>
+		</ul> -->
+
+	</div><!-- /content -->
+
+</div><!-- /page -->
