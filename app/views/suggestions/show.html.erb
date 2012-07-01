@@ -9,19 +9,20 @@
 
 	<div data-role="content">	
 	<h2> Titel: <%= @suggestion.title %> </h2>
-	<%= image_tag(@suggestion.file, :size => "300x200")%>
+	<%= image_tag(@suggestion.file, :size => "200x120")%>
 	<h3> Beschreibung: <%= @suggestion.description %> </h3>
 	<h3> Voting: +15 </h3>
-		<img src="images/testimage1.jpg" style="margin:0 auto;
-							margin-left:auto;
-							margin-right:auto;
-							align:center;
-							text-align:center;"/>
-		<form action="form.php" method="post"> 
-		<label for="basic">Neuer Kommentar:</label>
-		<input type="text" name="name" id="basic" value="" data-mini="true" />
-		<input type="submit" value="speichern" />		
-		</form>
+	<ul class="ui-listview" data-divider-theme="d" data-theme="d" data-role="listview">
+	<%= render @comments %>
+	</ul>
+	<br/>
+	<label for="basic">Neuer Kommentar:</label>
+	<%= semantic_form_for [@suggestion, @comment] do |c| %>
+		<%= c.input :description %>
+		<%= c.input :suggestion_id, :as => :hidden, :value => @suggestion.id %>
+		<%= c.input :user_id, :as => :hidden, :value => current_user.id %>
+		<%= c.actions :submit %>
+	<% end %>
 
 	</div><!-- /content -->
 

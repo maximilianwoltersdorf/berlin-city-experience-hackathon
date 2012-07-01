@@ -4,8 +4,9 @@ CityExperience::Application.routes.draw do
   root :to => "pages#new"
 
   resources :pages
-  resources :suggestions
-
+  resources :suggestions do
+    resources :comments
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
